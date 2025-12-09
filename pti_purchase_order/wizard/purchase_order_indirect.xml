@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_indirect_wizard" model="ir.ui.view">
+        <field name="name">purchase.order.indirect.wizard</field>
+        <field name="model">purchase.order.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Upload Purchase Order Indirect">
+                Trigger PO Indirect
+                <footer>
+                    <button name="trigger_po_indirect" string="Generate PO" type="object" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_trigger_po_indirect" model="ir.actions.act_window">
+        <field name="name">Upload Purchase Order Indirect</field>
+        <field name="res_model">purchase.order.wizard</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="purchase_order_indirect_wizard"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="menu_trigger_po_indirect"
+        name="Trigger PO Indirect"
+        parent="purchase.menu_procurement_management"
+        action="action_trigger_po_indirect"
+    />
+</odoo>
